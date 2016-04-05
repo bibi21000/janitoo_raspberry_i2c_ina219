@@ -112,10 +112,10 @@ class ADSComponent(JNTComponent):
             return False
         return self.values['temperature'].data is not None
 
-    def start(self, mqttc, trigger_thread_reload_cb=None):
+    def start(self, mqttc):
         """Start the bus
         """
-        JNTComponent.start(self, mqttc, trigger_thread_reload_cb)
+        JNTComponent.start(self, mqttc)
         self._bus.i2c_acquire()
         try:
             self.sensor = ADS1115(address=self.values["addr"].data, i2c=self._bus._ada_i2c)
