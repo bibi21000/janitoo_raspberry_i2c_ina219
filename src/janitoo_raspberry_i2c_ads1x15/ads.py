@@ -108,9 +108,7 @@ class ADSComponent(JNTComponent):
         """Check that the component is 'available'
 
         """
-        if 'temperature' not in self.values:
-            return False
-        return self.values['temperature'].data is not None
+        return self.sensor is not None
 
     def start(self, mqttc):
         """Start the bus
