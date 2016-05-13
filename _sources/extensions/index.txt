@@ -1,0 +1,13 @@
+janitoo_raspberry_i2c_ads1x15 package
+=====================================
+
+Show janitoo's extensions.
+
+Core extensions
+---------------
+
+Components
+^^^^^^^^^^
+
+ - rpii2c.ads (janitoo_raspberry_i2c_ads1x15.ads:make_ads)
+

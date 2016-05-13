@@ -1,0 +1,22 @@
+janitoo_raspberry_i2c_ads1x15 package
+=====================================
+
+Submodules
+----------
+
+janitoo_raspberry_i2c_ads1x15.ads module
+----------------------------------------
+
+.. automodule:: janitoo_raspberry_i2c_ads1x15.ads
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: janitoo_raspberry_i2c_ads1x15
+    :members:
+    :undoc-members:
+    :show-inheritance:
