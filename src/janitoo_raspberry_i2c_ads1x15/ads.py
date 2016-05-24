@@ -55,6 +55,8 @@ assert(COMMAND_DESC[COMMAND_WEB_RESOURCE] == 'COMMAND_WEB_RESOURCE')
 assert(COMMAND_DESC[COMMAND_DOC_RESOURCE] == 'COMMAND_DOC_RESOURCE')
 ##############################################################
 
+from janitoo_raspberry_i2c import OID
+
 def make_ads(**kwargs):
     return ADSComponent(**kwargs)
 
@@ -64,7 +66,7 @@ class ADSComponent(JNTComponent):
     def __init__(self, bus=None, addr=None, **kwargs):
         """
         """
-        oid = kwargs.pop('oid', 'rpii2c.ads')
+        oid = kwargs.pop('oid', '%s.ads'%OID)
         name = kwargs.pop('name', "Input")
         product_name = kwargs.pop('product_name', "ADS")
         product_type = kwargs.pop('product_type', "Analog to binary converter")
