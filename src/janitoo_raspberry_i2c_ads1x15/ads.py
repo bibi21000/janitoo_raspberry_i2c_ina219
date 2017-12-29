@@ -96,10 +96,10 @@ class ADSComponent(JNTComponent):
     def read_data(self, node_uuid, index):
         self._bus.i2c_acquire()
         try:
-            data = self.sensor.read_temp()
+            data = self.sensor.get_last_result()
             ret = float(data)
         except Exception:
-            logger.exception('[%s] - Exception when retrieving temperature', self.__class__.__name__)
+            logger.exception('[%s] - Exception when retrieving value', self.__class__.__name__)
             ret = None
         finally:
             self._bus.i2c_release()
@@ -117,7 +117,7 @@ class ADSComponent(JNTComponent):
         JNTComponent.start(self, mqttc)
         self._bus.i2c_acquire()
         try:
-            self.sensor = ADS1115(address=self.values["addr"].data, i2c=self._bus._ada_i2c, busnum=self._bus.get_busnum())
+            self.sensor = ADS1115(address=self.values["addr"].data, i2c=self._bus.get_adafruit_i2c(), busnum=self._bus.get_busnum())
         except Exception:
             logger.exception("[%s] - Can't start component", self.__class__.__name__)
         finally:
