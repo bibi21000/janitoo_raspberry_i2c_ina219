@@ -96,7 +96,7 @@ class ADSComponent(JNTComponent):
     def read_data(self, node_uuid, index):
         self._bus.i2c_acquire()
         try:
-            data = self.sensor.get_last_result()
+            data = self.sensor.read_adc(index, gain=1, data_rate=None)
             ret = float(data)
         except Exception:
             logger.exception('[%s] - Exception when retrieving value', self.__class__.__name__)
