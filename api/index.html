@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>janitoo_raspberry_i2c_ads1x15 package &#8212; janitoo_raspberry_i2c_ads1x15 0.0.7 documentation</title>
+    <title>janitoo_raspberry_i2c_ina219 package &#8212; janitoo_raspberry_i2c_ina219 0.0.7 documentation</title>
     
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -51,7 +51,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../index.html">
-          janitoo_raspberry_i2c_ads1x15</a>
+          janitoo_raspberry_i2c_ina219</a>
         <span class="navbar-text navbar-version pull-left"><b>0.0.7</b></span>
       </div>
 
@@ -108,52 +108,52 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="janitoo-raspberry-i2c-ads1x15-package">
-<h1>janitoo_raspberry_i2c_ads1x15 package<a class="headerlink" href="#janitoo-raspberry-i2c-ads1x15-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="janitoo-raspberry-i2c-ina219-package">
+<h1>janitoo_raspberry_i2c_ina219 package<a class="headerlink" href="#janitoo-raspberry-i2c-ina219-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-janitoo_raspberry_i2c_ads1x15.ads">
-<span id="janitoo-raspberry-i2c-ads1x15-ads-module"></span><h2>janitoo_raspberry_i2c_ads1x15.ads module<a class="headerlink" href="#module-janitoo_raspberry_i2c_ads1x15.ads" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-janitoo_raspberry_i2c_ina219.ina219">
+<span id="janitoo-raspberry-i2c-ina219-ina219-module"></span><h2>janitoo_raspberry_i2c_ina219.ina219 module<a class="headerlink" href="#module-janitoo_raspberry_i2c_ina219.ina219" title="Permalink to this headline">¶</a></h2>
 <p>The Raspberry bmp thread</p>
 <p>Server files using the http protocol</p>
 <dl class="class">
-<dt id="janitoo_raspberry_i2c_ads1x15.ads.ADSComponent">
-<em class="property">class </em><code class="descclassname">janitoo_raspberry_i2c_ads1x15.ads.</code><code class="descname">ADSComponent</code><span class="sig-paren">(</span><em>bus=None</em>, <em>addr=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ads1x15/ads.html#ADSComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ads1x15.ads.ADSComponent" title="Permalink to this definition">¶</a></dt>
+<dt id="janitoo_raspberry_i2c_ina219.ina219.ADSComponent">
+<em class="property">class </em><code class="descclassname">janitoo_raspberry_i2c_ina219.ina219.</code><code class="descname">ADSComponent</code><span class="sig-paren">(</span><em>bus=None</em>, <em>addr=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ina219/ina219.html#ADSComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ina219.ina219.ADSComponent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.component.JNTComponent</span></code></p>
 <p>A generic component for gpio</p>
 <dl class="method">
-<dt id="janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.check_heartbeat">
-<code class="descname">check_heartbeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ads1x15/ads.html#ADSComponent.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.check_heartbeat" title="Permalink to this definition">¶</a></dt>
+<dt id="janitoo_raspberry_i2c_ina219.ina219.ADSComponent.check_heartbeat">
+<code class="descname">check_heartbeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ina219/ina219.html#ADSComponent.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ina219.ina219.ADSComponent.check_heartbeat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that the component is &#8216;available&#8217;</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.read_data">
-<code class="descname">read_data</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ads1x15/ads.html#ADSComponent.read_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.read_data" title="Permalink to this definition">¶</a></dt>
+<dt id="janitoo_raspberry_i2c_ina219.ina219.ADSComponent.read_data">
+<code class="descname">read_data</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ina219/ina219.html#ADSComponent.read_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ina219.ina219.ADSComponent.read_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.start">
-<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ads1x15/ads.html#ADSComponent.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.start" title="Permalink to this definition">¶</a></dt>
+<dt id="janitoo_raspberry_i2c_ina219.ina219.ADSComponent.start">
+<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ina219/ina219.html#ADSComponent.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ina219.ina219.ADSComponent.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the bus</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ads1x15/ads.html#ADSComponent.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ads1x15.ads.ADSComponent.stop" title="Permalink to this definition">¶</a></dt>
+<dt id="janitoo_raspberry_i2c_ina219.ina219.ADSComponent.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ina219/ina219.html#ADSComponent.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ina219.ina219.ADSComponent.stop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
-<dt id="janitoo_raspberry_i2c_ads1x15.ads.make_ads">
-<code class="descclassname">janitoo_raspberry_i2c_ads1x15.ads.</code><code class="descname">make_ads</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ads1x15/ads.html#make_ads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ads1x15.ads.make_ads" title="Permalink to this definition">¶</a></dt>
+<dt id="janitoo_raspberry_i2c_ina219.ina219.make_ads">
+<code class="descclassname">janitoo_raspberry_i2c_ina219.ina219.</code><code class="descname">make_ads</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_raspberry_i2c_ina219/ina219.html#make_ads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_raspberry_i2c_ina219.ina219.make_ads" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
-<div class="section" id="module-janitoo_raspberry_i2c_ads1x15">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-janitoo_raspberry_i2c_ads1x15" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-janitoo_raspberry_i2c_ina219">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-janitoo_raspberry_i2c_ina219" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

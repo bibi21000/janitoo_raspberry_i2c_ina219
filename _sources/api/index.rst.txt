@@ -1,13 +1,13 @@
-janitoo_raspberry_i2c_ads1x15 package
-=====================================
+janitoo_raspberry_i2c_ina219 package
+====================================
 
 Submodules
 ----------
 
-janitoo_raspberry_i2c_ads1x15.ads module
-----------------------------------------
+janitoo_raspberry_i2c_ina219.ina219 module
+------------------------------------------
 
-.. automodule:: janitoo_raspberry_i2c_ads1x15.ads
+.. automodule:: janitoo_raspberry_i2c_ina219.ina219
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ janitoo_raspberry_i2c_ads1x15.ads module
 Module contents
 ---------------
 
-.. automodule:: janitoo_raspberry_i2c_ads1x15
+.. automodule:: janitoo_raspberry_i2c_ina219
     :members:
     :undoc-members:
     :show-inheritance:
