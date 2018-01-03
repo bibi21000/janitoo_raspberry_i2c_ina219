@@ -51,7 +51,7 @@ class TestRaspberryADS1X15Serser(JNTTDockerServer, JNTTDockerServerCommon):
     broker_user = 'toto'
     broker_password = 'toto'
     server_class = PiServer
-    server_conf = "tests/data/janitoo_raspberry_i2c_ads.conf"
+    server_conf = "tests/data/janitoo_raspberry_i2c_ina219.conf"
     hadds = [HADD%(144,0), HADD%(144,1)]
 
     def test_040_server_start_no_error_in_log(self):

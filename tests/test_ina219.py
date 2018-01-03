@@ -47,5 +47,5 @@ from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_S
 class TestADSComponent(JNTTComponent, JNTTComponentCommon):
     """Test the component
     """
-    component_name = "rpii2c.ads"
+    component_name = "rpii2c.ina219"
 
