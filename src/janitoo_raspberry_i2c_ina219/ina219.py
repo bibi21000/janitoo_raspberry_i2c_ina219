@@ -39,7 +39,7 @@ from janitoo.value import JNTValue
 from janitoo.component import JNTComponent
 from janitoo_raspberry_i2c.bus_i2c import I2CBus
 
-from Adafruit_ADS1x15 import ADS1115
+from ina219 import INA219
 
 ##############################################################
 #Check that we are in sync with the official command classes
@@ -57,19 +57,19 @@ assert(COMMAND_DESC[COMMAND_DOC_RESOURCE] == 'COMMAND_DOC_RESOURCE')
 
 from janitoo_raspberry_i2c import OID
 
-def make_ads(**kwargs):
-    return ADSComponent(**kwargs)
+def make_ina219(**kwargs):
+    return INA219Component(**kwargs)
 
-class ADSComponent(JNTComponent):
+class INA219Component(JNTComponent):
     """ A generic component for gpio """
 
     def __init__(self, bus=None, addr=None, **kwargs):
         """
         """
-        oid = kwargs.pop('oid', '%s.ads'%OID)
+        oid = kwargs.pop('oid', '%s.ina219'%OID)
         name = kwargs.pop('name', "Input")
-        product_name = kwargs.pop('product_name', "ADS")
-        product_type = kwargs.pop('product_type', "Analog to binary converter")
+        product_name = kwargs.pop('product_name', "INA219")
+        product_type = kwargs.pop('product_type', "Cuurent and power sensor")
         JNTComponent.__init__(self, oid=oid, bus=bus, addr=addr, name=name,
                 product_name=product_name, product_type=product_type, **kwargs)
         logger.debug("[%s] - __init__ node uuid:%s", self.__class__.__name__, self.uuid)
@@ -77,27 +77,80 @@ class ADSComponent(JNTComponent):
         uuid="addr"
         self.values[uuid] = self.value_factory['config_integer'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
-            help='The I2C address of the ADS component',
+            help='The I2C address of the INA219 component',
             label='Addr',
-            default=0x77,
+            default=0x40,
         )
-        uuid="data"
-        self.values[uuid] = self.value_factory['sensor_integer'](options=self.options, uuid=uuid,
+        uuid="shunt_ohms"
+        self.values[uuid] = self.value_factory['config_float'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
-            help='The data',
-            label='data',
-            get_data_cb=self.read_data,
+            help='The shunt of the INA219 component',
+            label='shunt',
+            default=0.1,
+        )
+        uuid="max_expected_amps"
+        self.values[uuid] = self.value_factory['config_float'](options=self.options, uuid=uuid,
+            node_uuid=self.uuid,
+            help='The max current expected for the INA219 component',
+            label='Max amps',
+            default=0.2,
+        )
+        uuid="voltage"
+        self.values[uuid] = self.value_factory['sensor_float'](options=self.options, uuid=uuid,
+            node_uuid=self.uuid,
+            help='The voltage',
+            label='voltage',
+            get_data_cb=self.read_voltage,
+        )
+        poll_value = self.values[uuid].create_poll_value(default=300)
+        self.values[poll_value.uuid] = poll_value
+        uuid="current"
+        self.values[uuid] = self.value_factory['sensor_float'](options=self.options, uuid=uuid,
+            node_uuid=self.uuid,
+            help='The current',
+            label='current',
+            get_data_cb=self.read_current,
+        )
+        poll_value = self.values[uuid].create_poll_value(default=300)
+        self.values[poll_value.uuid] = poll_value
+        uuid="power"
+        self.values[uuid] = self.value_factory['sensor_float'](options=self.options, uuid=uuid,
+            node_uuid=self.uuid,
+            help='The power',
+            label='power',
+            get_data_cb=self.read_power,
         )
         poll_value = self.values[uuid].create_poll_value(default=300)
         self.values[poll_value.uuid] = poll_value
 
         self.sensor = None
 
-    def read_data(self, node_uuid, index):
+    def read_power(self, node_uuid, index):
         self._bus.i2c_acquire()
         try:
-            data = self.sensor.read_adc(index, gain=1, data_rate=None)
-            ret = float(data)
+            return self.sensor.power()
+        except Exception:
+            logger.exception('[%s] - Exception when retrieving value', self.__class__.__name__)
+            ret = None
+        finally:
+            self._bus.i2c_release()
+        return ret
+
+    def read_current(self, node_uuid, index):
+        self._bus.i2c_acquire()
+        try:
+            return self.sensor.current()
+        except Exception:
+            logger.exception('[%s] - Exception when retrieving value', self.__class__.__name__)
+            ret = None
+        finally:
+            self._bus.i2c_release()
+        return ret
+
+    def read_voltage(self, node_uuid, index):
+        self._bus.i2c_acquire()
+        try:
+            return self.sensor.voltage()
         except Exception:
             logger.exception('[%s] - Exception when retrieving value', self.__class__.__name__)
             ret = None
@@ -117,7 +170,8 @@ class ADSComponent(JNTComponent):
         JNTComponent.start(self, mqttc)
         self._bus.i2c_acquire()
         try:
-            self.sensor = ADS1115(address=self.values["addr"].data, i2c=self._bus.get_adafruit_i2c(), busnum=self._bus.get_busnum())
+            self.sensor = INA219(self.values["shunt_ohms"].data, self.values["max_expected_amps"].data, log_level=logging.INFO)
+            self.sensor.configure(ina.RANGE_16V, ina.GAIN_AUTO)
         except Exception:
             logger.exception("[%s] - Can't start component", self.__class__.__name__)
         finally:

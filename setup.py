@@ -99,7 +99,7 @@ setup(
       'https://github.com/chrisb2/pi_ina219/archive/master.zip#egg=pi-ina219',
     ],
     entry_points = {    "janitoo.components": [
-        "rpii2c.ads = janitoo_raspberry_i2c_ina219.ina219:make_ina219",
+        "rpii2c.ina219 = janitoo_raspberry_i2c_ina219.ina219:make_ina219",
         ],
     },
 )
