@@ -4,10 +4,10 @@ janitoo_raspberry_i2c_ina219 package
 Submodules
 ----------
 
-janitoo_raspberry_i2c_ina219.ina219 module
-------------------------------------------
+janitoo_raspberry_i2c_ina219.ina module
+---------------------------------------
 
-.. automodule:: janitoo_raspberry_i2c_ina219.ina219
+.. automodule:: janitoo_raspberry_i2c_ina219.ina
     :members:
     :undoc-members:
     :show-inheritance:
