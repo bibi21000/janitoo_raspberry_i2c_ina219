@@ -1,17 +1,17 @@
-.. image:: https://travis-ci.org/bibi21000/janitoo_raspberry_i2c_ads1x15.svg?branch=master
-    :target: https://travis-ci.org/bibi21000/janitoo_raspberry_i2c_ads1x15
+.. image:: https://travis-ci.org/bibi21000/janitoo_raspberry_i2c_ina219.svg?branch=master
+    :target: https://travis-ci.org/bibi21000/janitoo_raspberry_i2c_ina219
     :alt: Travis status
 
-.. image:: https://coveralls.io/repos/bibi21000/janitoo_raspberry_i2c_ads1x15/badge.svg?branch=master&service=github
-    :target: https://coveralls.io/github/bibi21000/janitoo_raspberry_i2c_ads1x15?branch=master
+.. image:: https://coveralls.io/repos/bibi21000/janitoo_raspberry_i2c_ina219/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/github/bibi21000/janitoo_raspberry_i2c_ina219?branch=master
     :alt: Coveralls results
 
-.. image:: https://landscape.io/github/bibi21000/janitoo_raspberry_i2c_ads1x15/master/landscape.svg?style=flat
-   :target: https://landscape.io/github/bibi21000/janitoo_raspberry_i2c_ads1x15/master
+.. image:: https://landscape.io/github/bibi21000/janitoo_raspberry_i2c_ina219/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/bibi21000/janitoo_raspberry_i2c_ina219/master
    :alt: Code Health
 
 .. image:: https://img.shields.io/badge/Documentation-ok-brightgreen.svg?style=flat
-   :target: https://bibi21000.github.io/janitoo_raspberry_i2c_ads1x15/index.html
+   :target: https://bibi21000.github.io/janitoo_raspberry_i2c_ina219/index.html
    :alt: Documentation
 
 ===============
@@ -27,7 +27,7 @@ A text in this section.
 
 Documentation
 =============
-You can browse online documentation here : https://bibi21000.github.io/janitoo_raspberry_i2c_ads1x15/.
+You can browse online documentation here : https://bibi21000.github.io/janitoo_raspberry_i2c_ina219/.
 
 Tutorial
 ========
