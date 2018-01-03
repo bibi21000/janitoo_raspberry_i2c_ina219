@@ -87,8 +87,8 @@ setup(
     install_requires=[
                      'janitoo',
                      'janitoo_raspberry',
-                     'janitoo_raspberry_i2c',
                      'Adafruit-GPIO',
+                     'janitoo_raspberry_i2c',
                      'pi-ina219',
                     ],
     dependency_links = [
