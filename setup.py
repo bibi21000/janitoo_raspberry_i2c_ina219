@@ -96,7 +96,7 @@ setup(
       'https://github.com/bibi21000/janitoo_raspberry/archive/master.zip#egg=janitoo_raspberry',
       'https://github.com/bibi21000/janitoo_raspberry_i2c/archive/master.zip#egg=janitoo_raspberry_i2c',
       'https://github.com/adafruit/Adafruit_Python_GPIO/archive/master.zip#egg=Adafruit-GPIO',
-      'https://github.com/chrisb2/pi_ina219/archive/master.zip#egg=pi-ina219',
+      'https://github.com/bibi21000/pi_ina219/archive/master.zip#egg=pi-ina219',
     ],
     entry_points = {    "janitoo.components": [
         "rpii2c.ina219 = janitoo_raspberry_i2c_ina219.ina219:make_ina219",
