@@ -49,3 +49,33 @@ class TestINA219Component(JNTTComponent, JNTTComponentCommon):
     """
     component_name = "rpii2c.ina219"
 
+
+class TestINA219Thread(JNTTThreadRun, JNTTThreadRunCommon):
+    """Test the datarrd thread
+    """
+    thread_name = "rpii2c"
+    conf_file = "tests/data/janitoo_raspberry_i2c_ina219.conf"
+
+    def test_101_check_values(self):
+        self.skipRasperryTest()
+        self.wait_for_nodeman()
+        time.sleep(5)
+        self.assertValueOnBus('ina1','power')
+        self.assertValueOnBus('ina1','current')
+        self.assertValueOnBus('ina1','voltage')
+
+    def test_102_get_values(self):
+        self.onlyRasperryTest()
+        self.wait_for_nodeman()
+        time.sleep(5)
+        power = self.thread.bus.nodeman.find_value('ina1','power').data
+        print(power)
+        current = self.thread.bus.nodeman.find_value('ina1','current').data
+        print(current)
+        voltage = self.thread.bus.nodeman.find_value('ina1','voltage').data
+        print(voltage)
+        self.assertNotEqual(power, None)
+        self.assertNotEqual(current, None)
+        self.assertNotEqual(voltage, None)
+        self.assertNotInLogfile('^ERROR ')
+        
