@@ -93,32 +93,36 @@ class INA219Component(JNTComponent):
             node_uuid=self.uuid,
             help='The max current expected for the INA219 component',
             label='Max amps',
+            units='A',
             default=0.2,
         )
         uuid="voltage"
-        self.values[uuid] = self.value_factory['sensor_float'](options=self.options, uuid=uuid,
+        self.values[uuid] = self.value_factory['sensor_voltage'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
             help='The voltage',
-            label='voltage',
+            label='Voltage',
             get_data_cb=self.read_voltage,
-        )
+            units='V',
+       )
         poll_value = self.values[uuid].create_poll_value(default=300)
         self.values[poll_value.uuid] = poll_value
         uuid="current"
-        self.values[uuid] = self.value_factory['sensor_float'](options=self.options, uuid=uuid,
+        self.values[uuid] = self.value_factory['sensor_current'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
             help='The current',
-            label='current',
+            label='Current',
+            units='mA',
             get_data_cb=self.read_current,
         )
         poll_value = self.values[uuid].create_poll_value(default=300)
         self.values[poll_value.uuid] = poll_value
         uuid="power"
-        self.values[uuid] = self.value_factory['sensor_float'](options=self.options, uuid=uuid,
+        self.values[uuid] = self.value_factory['sensor_power'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
             help='The power',
-            label='power',
+            label='Power',
             get_data_cb=self.read_power,
+            units='mW',
         )
         poll_value = self.values[uuid].create_poll_value(default=300)
         self.values[poll_value.uuid] = poll_value
@@ -172,6 +176,7 @@ class INA219Component(JNTComponent):
         try:
             self.sensor = INA219(self.values["shunt_ohms"].data, self.values["max_expected_amps"].data, log_level=logging.INFO)
             self.sensor.configure(ina.RANGE_16V, ina.GAIN_AUTO)
+            self.sensor.wake()
         except Exception:
             logger.exception("[%s] - Can't start component", self.__class__.__name__)
         finally:
@@ -180,5 +185,6 @@ class INA219Component(JNTComponent):
     def stop(self):
         """
         """
+        self.sensor.sleep()
         JNTComponent.stop(self)
         self.sensor = None
