@@ -185,6 +185,7 @@ class INA219Component(JNTComponent):
     def stop(self):
         """
         """
-        self.sensor.sleep()
+        if self.sensor is not None:
+            self.sensor.sleep()
         JNTComponent.stop(self)
         self.sensor = None
