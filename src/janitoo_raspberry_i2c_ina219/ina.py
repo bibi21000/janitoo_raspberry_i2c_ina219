@@ -28,18 +28,17 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 
 import logging
 logger = logging.getLogger(__name__)
-import os, sys
-import threading
+import os
 
-from janitoo.thread import JNTBusThread, BaseThread
-from janitoo.options import get_option_autostart
-from janitoo.utils import HADD
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
+from janitoo.thread import JNTBusThread
 from janitoo.component import JNTComponent
-from janitoo_raspberry_i2c.bus_i2c import I2CBus
 
 from ina219 import INA219
+from ina219 import RANGE_16V, RANGE_32V
+from ina219 import GAIN_AUTO, GAIN_1_40MV, GAIN_2_80MV, GAIN_4_160MV, GAIN_8_320MV
+from ina219 import ADC_9BIT, ADC_10BIT, ADC_11BIT, ADC_12BIT
+from ina219 import ADC_2SAMP, ADC_4SAMP, ADC_8SAMP, ADC_16SAMP, ADC_32SAMP, ADC_64SAMP, ADC_128SAMP
+from ina219 import ADC_2SAMP, ADC_4SAMP, ADC_8SAMP, ADC_16SAMP, ADC_32SAMP, ADC_64SAMP, ADC_128SAMP
 
 ##############################################################
 #Check that we are in sync with the official command classes
@@ -174,8 +173,8 @@ class INA219Component(JNTComponent):
         JNTComponent.start(self, mqttc)
         self._bus.i2c_acquire()
         try:
-            self.sensor = INA219(self.values["shunt_ohms"].data, self.values["max_expected_amps"].data, log_level=logging.INFO)
-            self.sensor.configure(ina.RANGE_16V, ina.GAIN_AUTO)
+            self.sensor = INA219(self.values["shunt_ohms"].data, self.values["max_expected_amps"].data, log_level=logger.getEffectiveLevel())
+            self.sensor.configure(RANGE_16V, GAIN_AUTO)
             self.sensor.wake()
         except Exception:
             logger.exception("[%s] - Can't start component", self.__class__.__name__)
