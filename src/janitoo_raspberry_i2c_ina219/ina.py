@@ -34,11 +34,6 @@ from janitoo.thread import JNTBusThread
 from janitoo.component import JNTComponent
 
 from ina219 import INA219
-from ina219 import RANGE_16V, RANGE_32V
-from ina219 import GAIN_AUTO, GAIN_1_40MV, GAIN_2_80MV, GAIN_4_160MV, GAIN_8_320MV
-from ina219 import ADC_9BIT, ADC_10BIT, ADC_11BIT, ADC_12BIT
-from ina219 import ADC_2SAMP, ADC_4SAMP, ADC_8SAMP, ADC_16SAMP, ADC_32SAMP, ADC_64SAMP, ADC_128SAMP
-from ina219 import ADC_2SAMP, ADC_4SAMP, ADC_8SAMP, ADC_16SAMP, ADC_32SAMP, ADC_64SAMP, ADC_128SAMP
 
 ##############################################################
 #Check that we are in sync with the official command classes
@@ -174,7 +169,7 @@ class INA219Component(JNTComponent):
         self._bus.i2c_acquire()
         try:
             self.sensor = INA219(self.values["shunt_ohms"].data, self.values["max_expected_amps"].data, log_level=logger.getEffectiveLevel())
-            self.sensor.configure(RANGE_16V, GAIN_AUTO)
+            self.sensor.configure(self.sensor.RANGE_16V, self.sensor.GAIN_AUTO)
             self.sensor.wake()
         except Exception:
             logger.exception("[%s] - Can't start component", self.__class__.__name__)
